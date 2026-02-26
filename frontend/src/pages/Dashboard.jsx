@@ -42,6 +42,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) { navigate('/'); return; }
+
       const res = await axios.get('/movies', { // http://localhost:5000/api/movies
         headers: { Authorization: token }
       });
