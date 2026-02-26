@@ -42,7 +42,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) { navigate('/'); return; }
-      const res = await axios.get('http://localhost:5000/api/movies', {
+      const res = await axios.get('https://backend-ili2.onrender.com', {
         headers: { Authorization: token }
       });
       setMovies(res.data);
