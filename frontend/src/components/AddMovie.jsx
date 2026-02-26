@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import axios from '../axiosInstance';
 import toast from 'react-hot-toast';
 import { Film, Plus, X, Star, Layout, Globe, Calendar, Tv } from 'lucide-react';
 
@@ -38,7 +38,7 @@ const AddMovie = ({ fetchMovies }) => {
       };
 
       await axios.post(
-        'http://localhost:5000/api/movies',
+        '/movies', // http://localhost:5000/api/movies
         movieData,
         {
           headers: {
@@ -85,7 +85,7 @@ const AddMovie = ({ fetchMovies }) => {
 
       <dialog id="add_movie_modal" className="modal backdrop-blur-md">
         <div className="modal-box w-11/12 max-w-2xl bg-[#0f172a] border border-white/10 rounded-[3rem] p-10 sm:p-14 shadow-[0_0_100px_rgba(0,0,0,0.8)]">
-          
+
           {/* HEADER SECTION */}
           <div className="flex flex-col items-center mb-12 text-center">
             <div className="bg-primary/10 w-20 h-20 rounded-[2rem] flex items-center justify-center mb-6 border border-primary/20">
@@ -100,7 +100,7 @@ const AddMovie = ({ fetchMovies }) => {
           </div>
 
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
+
             {/* Title - Full Width */}
             <div className="form-control md:col-span-2 flex flex-col gap-3">
               <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em] ml-2 flex items-center gap-2">

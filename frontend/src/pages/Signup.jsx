@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import axios from '../axiosInstance';
 import toast from 'react-hot-toast';
 import { useNavigate, Link } from 'react-router-dom';
 import { UserPlus, Lock, ShieldCheck, ArrowRight, Clapperboard, Sparkles, Fingerprint } from 'lucide-react';
@@ -12,12 +12,12 @@ const Signup = () => {
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/api/auth/register', { 
-                username, 
-                password 
+            await axios.post('/auth/register', { // http://localhost:5000/api/auth/register
+                username,
+                password
             });
             toast.success("Identity Verified. Proceed to Login.");
-            navigate('/'); 
+            navigate('/');
         } catch (err) {
             toast.error(err.response?.data || "Vault Registration failed.");
         }
@@ -25,16 +25,16 @@ const Signup = () => {
 
     return (
         <div className="relative flex min-h-screen items-center justify-center bg-[#020617] overflow-hidden selection:bg-primary selection:text-white">
-            
+
             {/* ULTRA-RICH CINEMATIC BACKGROUND */}
             <div className="absolute inset-0 z-0">
-                <img 
-                    src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" 
+                <img
+                    src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop"
                     className="w-full h-full object-cover opacity-[0.08] grayscale scale-110 transition-transform duration-[20000ms] hover:scale-100"
                     alt="Space Cinema background"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#020617] via-transparent to-[#020617]"></div>
-                
+
                 {/* DYNAMIC NEON GLOWS */}
                 <div className="absolute top-[-20%] right-[-10%] w-[700px] h-[700px] bg-primary/20 rounded-full blur-[150px] animate-pulse"></div>
                 <div className="absolute bottom-[-20%] left-[-10%] w-[700px] h-[700px] bg-indigo-600/15 rounded-full blur-[150px]"></div>
@@ -42,7 +42,7 @@ const Signup = () => {
 
             {/* PREMIUM SIGNUP CHASSIS */}
             <div className="relative z-10 w-full max-w-md p-10 sm:p-16 bg-slate-900/40 backdrop-blur-3xl border border-white/5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] rounded-[3.5rem] mx-4 group animate-in fade-in zoom-in duration-700">
-                
+
                 {/* BRANDING SECTION */}
                 <div className="flex flex-col items-center mb-14">
                     <div className="relative mb-6">
@@ -66,16 +66,16 @@ const Signup = () => {
                         <div className="absolute left-6 top-1/2 -translate-y-1/2 text-primary/40 group-focus-within/input:text-primary transition-colors z-10">
                             <UserPlus size={18} />
                         </div>
-                        <input 
-                            type="text" 
+                        <input
+                            type="text"
                             id="username"
-                            placeholder=" " 
-                            className="peer w-full bg-white/[0.03] border border-white/5 h-16 rounded-2xl pl-16 pr-6 font-bold text-sm tracking-widest focus:outline-none focus:border-primary/50 focus:bg-white/[0.07] focus:ring-[15px] focus:ring-primary/5 transition-all text-white placeholder:opacity-0" 
+                            placeholder=" "
+                            className="peer w-full bg-white/[0.03] border border-white/5 h-16 rounded-2xl pl-16 pr-6 font-bold text-sm tracking-widest focus:outline-none focus:border-primary/50 focus:bg-white/[0.07] focus:ring-[15px] focus:ring-primary/5 transition-all text-white placeholder:opacity-0"
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)} 
-                            required 
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
                         />
-                        <label 
+                        <label
                             htmlFor="username"
                             className="absolute left-16 top-1/2 -translate-y-1/2 text-[10px] font-black text-white/20 uppercase tracking-[0.3em] transition-all duration-300 pointer-events-none
                             peer-focus:-top-4 peer-focus:left-6 peer-focus:text-primary 
@@ -90,16 +90,16 @@ const Signup = () => {
                         <div className="absolute left-6 top-1/2 -translate-y-1/2 text-primary/40 group-focus-within/input:text-primary transition-colors z-10">
                             <Lock size={18} />
                         </div>
-                        <input 
-                            type="password" 
+                        <input
+                            type="password"
                             id="password"
                             placeholder=" "
-                            className="peer w-full bg-white/[0.03] border border-white/5 h-16 rounded-2xl pl-16 pr-6 font-bold text-sm tracking-widest focus:outline-none focus:border-primary/50 focus:bg-white/[0.07] focus:ring-[15px] focus:ring-primary/5 transition-all text-white placeholder:opacity-0" 
+                            className="peer w-full bg-white/[0.03] border border-white/5 h-16 rounded-2xl pl-16 pr-6 font-bold text-sm tracking-widest focus:outline-none focus:border-primary/50 focus:bg-white/[0.07] focus:ring-[15px] focus:ring-primary/5 transition-all text-white placeholder:opacity-0"
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)} 
-                            required 
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
                         />
-                        <label 
+                        <label
                             htmlFor="password"
                             className="absolute left-16 top-1/2 -translate-y-1/2 text-[10px] font-black text-white/20 uppercase tracking-[0.3em] transition-all duration-300 pointer-events-none
                             peer-focus:-top-4 peer-focus:left-6 peer-focus:text-primary 

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
+import axios from '../axiosInstance';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -42,7 +42,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) { navigate('/'); return; }
-      const res = await axios.get('http://localhost:5000/api/movies', {
+      const res = await axios.get('/movies', { // http://localhost:5000/api/movies
         headers: { Authorization: token }
       });
       setMovies(res.data);
@@ -91,7 +91,7 @@ const Dashboard = () => {
     if (!movieToDelete) return;
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/movies/${movieToDelete._id}`, {
+      await axios.delete(`/movies/${movieToDelete._id}`, { // http://localhost:5000/api/movies/${movieToDelete._id}
         headers: { Authorization: token }
       });
       toast.success("Entry Purged Successfully");
@@ -106,7 +106,7 @@ const Dashboard = () => {
   const toggleFavorite = async (id, currentStatus) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/movies/${id}`,
+      await axios.put(`/movies/${id}`, // http://localhost:5000/api/movies/${id}
         { isFavorite: !currentStatus },
         { headers: { Authorization: token } }
       );
