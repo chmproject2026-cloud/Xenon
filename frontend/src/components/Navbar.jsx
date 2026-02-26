@@ -153,10 +153,10 @@ const Navbar = ({ searchTerm, setSearchTerm, handleLogout }) => {
         }}
       />
 
-      <div className="relative z-10 max-w-[1800px] mx-auto px-6 md:px-16 grid grid-cols-3 items-center">
+      <div className="relative z-10 max-w-[1800px] mx-auto px-4 sm:px-6 md:px-16 flex flex-col md:grid md:grid-cols-3 items-center gap-4 md:gap-0">
 
         {/* LEFT COLUMN: LOGO */}
-        <div className="flex items-center gap-4 group cursor-pointer justify-self-start">
+        <div className="flex items-center gap-4 group cursor-pointer justify-self-center md:justify-self-start">
           <div className="relative">
             <div className="absolute inset-0 bg-primary blur-2xl opacity-20 group-hover:opacity-50 transition-opacity duration-500"></div>
             <div className="relative bg-gradient-to-br from-primary to-indigo-600 p-3 rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.3)] group-hover:rotate-[360deg] transition-all duration-700 ease-in-out">
@@ -194,7 +194,7 @@ const Navbar = ({ searchTerm, setSearchTerm, handleLogout }) => {
               ref={inputRef}
               type="text"
               placeholder="SEARCH YOUR ARCHIVE..."
-              className="input bg-white/[0.03] border border-white/10 w-[400px] pl-16 h-14 rounded-2xl font-black text-[10px] tracking-[0.25em] focus:outline-none focus:w-[500px] focus:border-primary/50 focus:bg-white/[0.07] focus:ring-[15px] focus:ring-primary/5 transition-all duration-700 placeholder:text-white/10 text-white shadow-2xl relative z-10"
+              className="input bg-white/[0.03] border border-white/10 w-full sm:w-[300px] md:w-[400px] pl-16 h-14 rounded-2xl font-black text-[10px] tracking-[0.25em] focus:outline-none focus:w-full sm:focus:w-[400px] md:focus:w-[500px] focus:border-primary/50 focus:bg-white/[0.07] focus:ring-[15px] focus:ring-primary/5 transition-all duration-700 placeholder:text-white/10 text-white shadow-2xl relative z-10"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onFocus={() => setIsHistoryOpen(true)}
@@ -237,7 +237,7 @@ const Navbar = ({ searchTerm, setSearchTerm, handleLogout }) => {
         </div>
 
         {/* RIGHT COLUMN: ACTIONS & SESSION BADGE */}
-        <div className="flex items-center gap-6 justify-self-end">
+        <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-4 md:gap-6 justify-self-center md:justify-self-end w-full md:w-auto">
 
           {/* UPDATED PREMIUM USER BADGE WITH TIMER */}
           <div className="flex items-center gap-4 bg-white/[0.02] p-1.5 pr-6 rounded-2xl border border-white/5 hover:border-primary/30 hover:bg-primary/[0.02] transition-all duration-500 group cursor-default">
